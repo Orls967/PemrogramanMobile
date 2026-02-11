@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- TextInput isi nama -->
+    <EditText
+        android:id="@+id/etNama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan nama"
+        android:inputType="textPersonName" />
+
+    <!-- Tombol sapa -->
+    <Button
+        android:id="@+id/btnSapa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sapa"
+        android:layout_marginTop="16dp" />
+
+    <!-- Output -->
+    <TextView
+        android:id="@+id/tvOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Tombol Light / Dark Mode -->
+    <Button
+        android:id="@+id/btnMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ganti Light / Dark Mode"
+        android:layout_marginTop="24dp" />
+
+</LinearLayout>
