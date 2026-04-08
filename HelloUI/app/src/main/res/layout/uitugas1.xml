@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tvLabelNama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masukkan nama anda"
+        android:textColor="@color/labelText"
+        android:textSize="16sp"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:id="@+id/etNama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contoh: ichigo"
+        android:inputType="textPersonName"
+        android:minHeight="56dp" />
+
+    <Button
+        android:id="@+id/btnSapa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAPA"
+        android:textSize="18sp"
+        android:minHeight="56dp"
+        android:layout_marginTop="22dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvOutput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/labelText"
+            android:gravity="center"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/switchMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mode Gelap"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp" />
+
+    </LinearLayout>
