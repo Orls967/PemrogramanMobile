@@ -15,22 +15,20 @@ class MainActivity : AppCompatActivity() {
         val spinner = findViewById<Spinner>(R.id.spinnerTip)
         val switchRound = findViewById<Switch>(R.id.switchRound)
         val result = findViewById<TextView>(R.id.tvResult)
-
-        // isi pilihan persen tip
         val tipOptions = arrayOf("15%", "18%", "20%")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, tipOptions)
         spinner.adapter = adapter
 
-        // function hitung tip
         fun calculateTip() {
             val billText = etBill.text.toString()
 
-            if (billText.isEmpty()) {
+            if (billText.isEmpty() || billText == "." || billText == ",") {
                 result.text = "Tip Amount: $0.00"
                 return
             }
 
-            val bill = billText.toDouble()
+            val bill = billText.toDoubleOrNull() ?: 0.0
+
             val selected = spinner.selectedItem.toString()
 
             val percent = when (selected) {

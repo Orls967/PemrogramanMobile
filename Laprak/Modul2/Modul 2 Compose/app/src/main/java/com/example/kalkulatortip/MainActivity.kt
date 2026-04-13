@@ -4,8 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -33,26 +36,32 @@ fun TipApp() {
 
     val tipOptions = listOf("15%", "18%", "20%")
 
-    // ===== VALIDASI INPUT =====
     fun isValidInput(input: String): Boolean {
         return input.matches(Regex("^\\d*(\\.|,)?\\d*\$"))
     }
 
-    // ===== HITUNG TIP =====
     val percent = when (selectedTip) {
         "15%" -> 0.15
         "18%" -> 0.18
         else -> 0.20
     }
 
-    val billValue = bill
-        .replace(",", ".")
-        .toDoubleOrNull() ?: 0.0
+    val cleanBill = bill.replace(",", ".")
 
-    var tip = billValue * percent
+    val billValue = if (
+        cleanBill.isEmpty() ||
+        cleanBill == "." ||
+        cleanBill.endsWith(".")
+    ) {
+        0.0
+    } else {
+        cleanBill.toDoubleOrNull() ?: 0.0
+    }
 
-    if (roundUp) {
-        tip = ceil(tip)
+    val tip = if (roundUp) {
+        ceil(billValue * percent)
+    } else {
+        billValue * percent
     }
 
     Column(
@@ -70,7 +79,6 @@ fun TipApp() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // ===== BILL CARD =====
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -108,7 +116,6 @@ fun TipApp() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // ===== TIP CARD =====
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -121,18 +128,32 @@ fun TipApp() {
                 style = MaterialTheme.typography.titleMedium
             )
 
-            Box {
-                TextButton(onClick = { expanded = true }) {
+            Box(modifier = Modifier.fillMaxWidth()) {
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp)
+                        .clickable { expanded = true },
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Text(
                         selectedTip,
-                        color = Color.Black,
-                        style = MaterialTheme.typography.bodyLarge
+                        modifier = Modifier.weight(1f),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color.Black
+                    )
+
+                    Icon(
+                        imageVector = Icons.Default.ArrowDropDown,
+                        contentDescription = "Dropdown"
                     )
                 }
 
                 DropdownMenu(
                     expanded = expanded,
-                    onDismissRequest = { expanded = false }
+                    onDismissRequest = { expanded = false },
+                    modifier = Modifier.fillMaxWidth()
                 ) {
                     tipOptions.forEach {
                         DropdownMenuItem(
@@ -154,7 +175,6 @@ fun TipApp() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // ===== SWITCH =====
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
