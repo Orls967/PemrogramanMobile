@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Aplikasi Profil Mahasiswa</string>
+    <string name="nama">Orlando Sugian</string>
+    <string name="nim">2410817210017</string>
+    <string name="prodi">Teknologi Informasi</string>
+    <string name="deskripsi">Mahasiswa yang sedang mempelajari Android Development dan Activity Lifecycle.</string>
+    <string name="btn_detail">Buka Halaman Detail</string>
+    <string name="btn_back">Kembali</string>
+    <string name="detail_title">Detail Mahasiswa</string>
+    <string name="hobi">Hobi: Belajar Android dan UI Design</string>
+    <string name="email">Email: orlando@example.com</string>
+    <string name="lifecycle_text">Lifecycle Aktif:</string>
+    <string name="label_nama">Nama:</string>
+    <string name="label_nim">NIM:</string>
+    <string name="label_prodi">Program Studi:</string>
+    <string name="detail_description">Halaman ini menampilkan informasi tambahan mahasiswa.</string>
+</resources>
