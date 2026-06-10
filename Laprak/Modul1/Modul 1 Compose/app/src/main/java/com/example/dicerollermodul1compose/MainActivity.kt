@@ -25,7 +25,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DiceApp() {
 
-    // 0 = belum di-roll (dadu kosong)
     var dice1 by remember { mutableStateOf(0) }
     var dice2 by remember { mutableStateOf(0) }
     var resultText by remember { mutableStateOf("Tekan Roll!") }
