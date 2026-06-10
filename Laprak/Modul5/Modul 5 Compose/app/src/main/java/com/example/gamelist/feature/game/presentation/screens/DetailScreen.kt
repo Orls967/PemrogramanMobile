@@ -93,7 +93,6 @@ fun DetailScreen(game: Game, onBack: () -> Unit) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Rating
             val rating = run {
                 val regex = """rating of ([0-9.]+)/5""".toRegex()
                 regex.find(game.desc)?.groupValues?.get(1) ?: "0.0"
@@ -111,7 +110,6 @@ fun DetailScreen(game: Game, onBack: () -> Unit) {
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Year and Genre Tags
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
